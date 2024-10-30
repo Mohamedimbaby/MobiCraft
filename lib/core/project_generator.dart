@@ -1,12 +1,13 @@
+/*
 import 'dart:developer';
 import 'dart:io';
-import 'package:mobicraft/widgets/widget_model.dart';
+import 'package:mobicraft/widgets/ui_element.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:archive/archive.dart';
 import 'package:permission_handler/permission_handler.dart'; // You need to add archive package to pubspec.yaml
 
 class ProjectExporter {
-  Future<void> exportProject(List<WidgetModel> widgets) async {
+  Future<void> exportProject(List<UIElement> elements) async {
     // Get the directory to store the project files
     final directory = await getApplicationDocumentsDirectory();
     final projectDir = Directory('${directory.path}/client_project');
@@ -22,7 +23,7 @@ class ProjectExporter {
     log("folder path is ${libDir.path}");
 
     final mainFile = File('${libDir.path}/main.dart');
-    await mainFile.writeAsString(generateMainFile(widgets));
+    await mainFile.writeAsString(generateMainFile(elements));
 
     // Create pubspec.yaml
     final pubspecFile = File('${projectDir.path}/pubspec.yaml');
@@ -33,7 +34,7 @@ class ProjectExporter {
     await widgetsDir.create();
 
     // Generate widget files
-    for (var widget in widgets) {
+    for (var widget in elements) {
       final widgetFile = File('${widgetsDir.path}/${widget.type}Widget.dart');
       await widgetFile.writeAsString(generateWidgetFile(widget));
     }
@@ -80,7 +81,7 @@ dependencies:
 ''';
   }
 
-  String generateWidgetFile(WidgetModel widgetModel) {
+  String generateWidgetFile(UIElement widgetModel) {
     // Create Dart code based on the WidgetModel
     String widgetType =
         widgetModel.type == "Button" ? "ElevatedButton" : "Text";
@@ -152,3 +153,4 @@ class ${widgetModel.type}Widget extends StatelessWidget {
     }
   }
 }
+*/
