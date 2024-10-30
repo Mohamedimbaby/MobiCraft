@@ -10,6 +10,7 @@ class TextFormFieldAttributeKeys {
   static const String icon = 'icon';
   static const String prefixIcon = 'prefixIcon';
   static const String suffixIcon = 'suffixIcon';
+  static const String suffix= 'suffix';
   static const String border = 'border';
   static const String focusedBorder = 'focusedBorder';
   static const String enabledBorder = 'enabledBorder';
