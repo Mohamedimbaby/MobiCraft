@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mobicraft/flutter_generator/flutter_generator.dart';
 import 'package:mobicraft/widgets/base_widget/base_widget.dart';
 import 'package:mobicraft/widgets/text_form_field/attributes/text_field_attributes.dart';
+import 'package:mobicraft/widgets/ui_element.dart';
 
 class AppTextFormField extends BaseWidget{
   @override
@@ -14,9 +16,10 @@ class AppTextFormField extends BaseWidget{
           errorText: attributes[TextFormFieldAttributeKeys.errorText] as String?,
           prefixText: attributes[TextFormFieldAttributeKeys.prefixText] as String?,
           suffixText: attributes[TextFormFieldAttributeKeys.suffixText] as String?,
-          icon: attributes[TextFormFieldAttributeKeys.icon] as Widget?,
-          prefixIcon: attributes[TextFormFieldAttributeKeys.prefixIcon] as Widget?,
-          suffixIcon: attributes[TextFormFieldAttributeKeys.suffixIcon] as Widget?,
+          icon: attributes[TextFormFieldAttributeKeys.icon] != null ? FlutterGenerator.generate(attributes[TextFormFieldAttributeKeys.icon] as UIElement) : null,
+          prefixIcon: attributes[TextFormFieldAttributeKeys.prefixIcon] != null ? FlutterGenerator.generate(attributes[TextFormFieldAttributeKeys.prefixIcon] as UIElement) : null,
+          suffixIcon: attributes[TextFormFieldAttributeKeys.suffixIcon] != null ? FlutterGenerator.generate(attributes[TextFormFieldAttributeKeys.suffixIcon] as UIElement) : null,
+          suffix: attributes[TextFormFieldAttributeKeys.suffix] != null ? FlutterGenerator.generate(attributes[TextFormFieldAttributeKeys.suffix] as UIElement) : null,
           border: attributes[TextFormFieldAttributeKeys.border] as InputBorder? ?? const OutlineInputBorder(),
           focusedBorder: attributes[TextFormFieldAttributeKeys.focusedBorder] as InputBorder?,
           enabledBorder: attributes[TextFormFieldAttributeKeys.enabledBorder] as InputBorder?,

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mobicraft/flutter_generator/flutter_generator.dart';
 import 'package:mobicraft/widgets/base_widget/base_widget.dart';
 import 'package:mobicraft/widgets/button/attributes/button_attributes_keys.dart';
+import 'package:mobicraft/widgets/ui_element.dart';
 
 class AppButton extends BaseWidget{
   @override
@@ -9,7 +11,6 @@ class AppButton extends BaseWidget{
     final color = attributes[ButtonAttributes.color] ?? Colors.blue;
     final width = attributes[ButtonAttributes.width] ?? 100.0;
     final height = attributes[ButtonAttributes.height] ?? 40.0;
-
     // Text styling
     final textColor = attributes[ButtonAttributes.textColor] ?? Colors.white;
     final fontSize = attributes[ButtonAttributes.fontSize] ?? 16.0;
@@ -29,8 +30,8 @@ class AppButton extends BaseWidget{
     final maximumSize = attributes[ButtonAttributes.maximumSize] ?? const Size(double.infinity, 56);
 
     // Icon and child
-    final icon = attributes[ButtonAttributes.icon] as Widget?;
-    final child = attributes[ButtonAttributes.child] as Widget?;
+    final icon = attributes[ButtonAttributes.icon] as UIElement?;
+    final child = attributes[ButtonAttributes.child] as UIElement?;
 
     // Create button with or without an icon
     return SizedBox(
@@ -51,8 +52,8 @@ class AppButton extends BaseWidget{
           ),
         ),
         onPressed: attributes[ButtonAttributes.onPressed] ?? () {},
-        icon: icon,
-        label: child ??
+        icon: FlutterGenerator.generate(icon),
+        label: child != null ? FlutterGenerator.generate(child) :
             Text(
               text,
               style: TextStyle(
@@ -77,7 +78,7 @@ class AppButton extends BaseWidget{
           ),
         ),
         onPressed: attributes[ButtonAttributes.onPressed] ?? () {},
-        child: child ??
+        child: child != null ? FlutterGenerator.generate(child) :
             Text(
               text,
               style: TextStyle(
