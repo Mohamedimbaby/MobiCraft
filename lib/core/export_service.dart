@@ -1,9 +1,16 @@
+/*
+
+import 'package:mobicraft/widgets/ui_element.dart';
 
 import '../widgets/widget_model.dart';
 
 class ExportService {
-  String generateDartCode(WidgetModel widgetModel) {
-    String widgetType = widgetModel.type == "Button" ? "ElevatedButton" : "Text";
+  String generateDartCode(UIElement uiElement) {
+    switch (uiElement.type){
+      case "Button" :
+        return AppButton.generate(uiElement.properties);
+    } ==  ?
+    "ElevatedButton" : "Text";
     String positionCode = widgetModel.position != null
         ? "Positioned(left: ${widgetModel.position!.dx}, top: ${widgetModel.position!.dy})"
         : "";
@@ -34,3 +41,4 @@ class ${widgetModel.type}Widget extends StatelessWidget {
 ''';
   }
 }
+*/
