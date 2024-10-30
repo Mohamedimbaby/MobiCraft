@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:mobicraft/widgets/base_widget/base_widget.dart';
 class ColumnAttributeKeys {
   static const String mainAxisAlignment = 'mainAxisAlignment';
   static const String crossAxisAlignment = 'crossAxisAlignment';
